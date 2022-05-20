@@ -14,12 +14,17 @@ public class Controlador {
 			lines = fr.readingFile("guategrafo.txt");
 			for (int i = 0; i < lines.size(); i++){
 				String [] tempArray = lines.get(i).split(" ");
-				edges.add(new Edge(tempArray[0], tempArray[1], tempArray[2]));
+				edges.add(new Edge(i, tempArray[0], tempArray[1], tempArray[2]));
 			}
 
 		} catch (FileNotFoundException e) {
 			System.out.println("Usted no cuenta con un archivo con este nombre");
 			System.exit(0);
 		}
+	}
+
+	public void test(){
+		Graph g = new Graph(edges);
+		g.printGraph(g);
 	}
 }
