@@ -34,6 +34,8 @@ public class Main {
 
 					//Agregar arco
 					case 2:
+						c.addEdge();
+						g = c.genGraph();
 						break;
 
 					//Elminar arco

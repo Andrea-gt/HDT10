@@ -6,8 +6,14 @@ class Edge {
     String dest, src;
 	public Edge(int val, String string, String string2, String string3) {
         this.val = val;
-		this.src = string;
+        this.src = string;
         this.dest = string2;
         this.weight = Integer.parseInt(string3);
-	}
+    }
+    public Edge(int val, String string, String string2, int w) {
+        this.val = val;
+        this.src = string;
+        this.dest = string2;
+        this.weight = w;
+    }
 }

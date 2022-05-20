@@ -4,7 +4,7 @@ import java.util.List;
 // Graph class
 class Graph {
 
-    final static int INF = 99999, V = 4;
+    final static int INF = 99999;
 
     // node of adjacency list 
     static class Node {
@@ -35,6 +35,7 @@ List<List<Node>> adj_list = new ArrayList<>();
             adj_list.get(e.val).add(new Node(e.dest, e.weight, e.src));         
         }
     }
+    
 // print adjacency list for the graph
     public static void printGraph(Graph graph)  {
         int src_vertex = 0;
@@ -52,6 +53,8 @@ List<List<Node>> adj_list = new ArrayList<>();
     }
 
     void floydWarshall(int graph[][]){
+
+        int V = adj_list.size();
 
         int dist[][] = new int[V][V];
         int i, j, k;
@@ -115,6 +118,8 @@ List<List<Node>> adj_list = new ArrayList<>();
     void printSolution(int dist[][])
 
     {
+
+        int V = adj_list.size();
 
         System.out.println("The following matrix shows the shortest "+
 

@@ -1,11 +1,13 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Controlador {
 	private TxtReader fr = new TxtReader();
 	private ArrayList<String> lines = new ArrayList<String>();
 	private List<Edge> edges = new ArrayList<Edge>();
+	private Scanner scan = new Scanner(System.in);
 	/**
 	 * Metodo encargado de ingresar las palabras iniciales al diccionario
 	 */
@@ -28,6 +30,18 @@ public class Controlador {
 
 	public Graph genGraph(){
 		return new Graph(edges);
+	}
+
+	public void addEdge(){
+		String[] temp = new String[2];
+		System.out.println("\nIngrese el primer vertice: ");
+		temp[0] = scan.next();
+		System.out.println("\nIngrese el segundo vertice: ");
+		temp[1] = scan.next();
+		System.out.println("\nIngrese el peso del arco: ");
+		int w = scan.nextInt();
+		edges.add(new Edge(edges.size(), temp[0], temp[1], w));
+
 	}
 
 }
