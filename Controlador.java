@@ -21,10 +21,13 @@ public class Controlador {
 			System.out.println("Usted no cuenta con un archivo con este nombre");
 			System.exit(0);
 		}
+
+		
+
 	}
 
-	public void test(){
-		Graph g = new Graph(edges);
-		g.printGraph(g);
+	public Graph genGraph(){
+		return new Graph(edges);
 	}
+
 }
