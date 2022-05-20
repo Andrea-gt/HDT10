@@ -18,7 +18,7 @@ public class Controlador {
 			}
 
 		} catch (FileNotFoundException e) {
-			System.out.println("Usted no cuenta con un archivo con este nombre);
+			System.out.println("Usted no cuenta con un archivo con este nombre");
 			System.exit(0);
 		}
 	}

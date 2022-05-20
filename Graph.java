@@ -5,8 +5,9 @@ import java.util.List;
 class Graph {
     // node of adjacency list 
     static class Node {
-        int value, weight;
-        Node(int value, int weight)  {
+        int weight;
+        String value;
+        Node(String value, int weight)  {
             this.value = value;
             this.weight = weight;
         }
@@ -27,7 +28,13 @@ List<List<Node>> adj_list = new ArrayList<>();
         for (Edge e : edges)
         {
             // allocate new node in adjacency List from src to dest
-            adj_list.get(e.src).add(new Node(e.dest, e.weight));
+            for(int i=0; i<adj_list.size(); i++){
+                if(e.src.equals(adj_list.get(i))){
+                    adj_list.get(i).add(new Node(e.dest, e.weight));
+                    break;
+                }
+            }
+            
         }
     }
 // print adjacency list for the graph

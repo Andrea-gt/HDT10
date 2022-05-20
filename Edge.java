@@ -2,13 +2,11 @@ import java.util.*;
  
 //class to store edges of the weighted graph
 class Edge {
-    int src, dest, weight;
-    Edge(int src, int dest, int weight) {
-            this.src = src;
-            this.dest = dest;
-            this.weight = weight;
-        }
+    int weight;
+    String dest, src;
 	public Edge(String string, String string2, String string3) {
-		// TODO Auto-generated constructor stub
+		this.src = string;
+        this.dest = string2;
+        this.weight = Integer.parseInt(string3);
 	}
 }
