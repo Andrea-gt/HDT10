@@ -9,8 +9,9 @@ class Graph {
     // node of adjacency list 
     static class Node {
         int weight;
-        String value;
-        Node(String value, int weight)  {
+        String value, src;
+        Node(String value, int weight, String src)  {
+            this.src = src;
             this.value = value;
             this.weight = weight;
         }
@@ -31,7 +32,7 @@ List<List<Node>> adj_list = new ArrayList<>();
         for (Edge e : edges)
         {
             // allocate new node in adjacency List from src to dest
-            adj_list.get(e.val).add(new Node(e.dest, e.weight));         
+            adj_list.get(e.val).add(new Node(e.dest, e.weight, e.src));         
         }
     }
 // print adjacency list for the graph
@@ -42,7 +43,7 @@ List<List<Node>> adj_list = new ArrayList<>();
         while (src_vertex < list_size) {
             //traverse through the adjacency list and print the edges
             for (Node edge : graph.adj_list.get(src_vertex)) {
-                System.out.print("Vertex:" + src_vertex + " ==> " + edge.value + 
+                System.out.print("Vertice: " + edge.src + " ==> " + edge.value + 
                                 " (" + edge.weight + ")\t");
             }
             System.out.println();
