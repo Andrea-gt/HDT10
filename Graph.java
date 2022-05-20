@@ -35,21 +35,25 @@ List<List<Node>> adj_list = new ArrayList<>();
             adj_list.get(e.val).add(new Node(e.dest, e.weight, e.src));         
         }
     }
-// print adjacency list for the graph
-    public static void printGraph(Graph graph)  {
+    
+ // print adjacency list for the graph
+    public static String printGraph(Graph graph)  {
         int src_vertex = 0;
         int list_size = graph.adj_list.size();
- 
+        String finalString = "";
+        
         while (src_vertex < list_size) {
             //traverse through the adjacency list and print the edges
             for (Node edge : graph.adj_list.get(src_vertex)) {
-                System.out.print("Vertice: " + edge.src + " ==> " + edge.value + 
-                                " (" + edge.weight + ")\t");
+                finalString = finalString + (",Vertice: " + edge.src + " ==> " + edge.value + 
+                                " (" + edge.weight + ")");
             }
             System.out.println();
             src_vertex++;
         }
+		return finalString;
     }
+
 
     void floydWarshall(int graph[][]){
 
