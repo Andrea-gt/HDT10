@@ -91,4 +91,35 @@ public class Controlador {
 
 	}
 
+	public String calcCentro(Graph g){
+
+		//Excentricidad
+
+		String[] temp = new String[2];
+		String centro = " ";
+		int w_temp = 9999;
+		for(int i = 0; i<g.adj_list.size()-1; i++){
+			centro = g.adj_list.get(1).get(0).src;
+			w_temp = g.adj_list.get(5).get(0).weight;
+			for(int h = 0; h<g.adj_list.get(i).size()-1; i++){
+				if(g.adj_list.get(i).get(h).src.equals(temp[0]) && g.adj_list.get(i).get(h).value.equals(temp[1])){
+
+					if(g.adj_list.get(i).get(h).weight < w_temp){
+						w_temp = g.adj_list.get(i).get(h).weight;
+						centro = g.adj_list.get(i).get(h).src;
+					} 
+					
+				} else {
+					if(w_temp == 9999){
+						w_temp -= w_temp;
+					} else {
+						w_temp += 5;
+					}
+				}
+			}
+		}
+
+		return "Centro del grafo actual: " + centro + "\nExcentricidad: " + w_temp;
+	}
+
 }

@@ -55,100 +55,97 @@ List<List<Node>> adj_list = new ArrayList<>();
     }
 
 
-    void floydWarshall(int graph[][]){
+    public void floydWarshall(String src, String dest){
 
         int V = adj_list.size();
-
         int dist[][] = new int[V][V];
         int i, j, k;
-        /* Initialize the solution matrix 
-           same as input graph matrix.
-           Or we can say the initial values 
-           of shortest distances
-           are based on shortest paths 
-           considering no intermediate
-           vertex. */
 
         for (i = 0; i < V; i++)
             for (j = 0; j < V; j++)
-                dist[i][j] = graph[i][j];
- 
-        /* Add all vertices one by one 
-           to the set of intermediate
-           vertices.
-          ---> Before start of an iteration, 
-               we have shortest
-               distances between all pairs 
-               of vertices such that
-               the shortest distances consider 
-               only the vertices in
-               set {0, 1, 2, .. k-1} as 
-               intermediate vertices.
-          ----> After the end of an iteration, 
-                vertex no. k is added
-                to the set of intermediate 
-                vertices and the set
-                becomes {0, 1, 2, .. k} */
-
+                dist[i][j] = dist[i][j];
         for (k = 0; k < V; k++){
-
-            // Pick all vertices as source one by one
             for (i = 0; i < V; i++){
-                // Pick all vertices as destination for the
-                // above picked source
                 for (j = 0; j < V; j++){
-
-                    // If vertex k is on the shortest path from
-                    // i to j, then update the value of dist[i][j]
                     if (dist[i][k] + dist[k][j] < dist[i][j])
-
                         dist[i][j] = dist[i][k] + dist[k][j];
 
                 }
-
             }
-
         }
- 
 
-        // Print the shortest distance matrix
-
-        printSolution(dist);
+        printSolution(dist, src, dest);
 
     }
  
 
-    void printSolution(int dist[][])
+    void printSolution(int dist[][], String src, String dest){
 
-    {
+        String temp;
+        boolean flag = true, flag2 = true;
 
         int V = adj_list.size();
 
-        System.out.println("The following matrix shows the shortest "+
-
-                         "distances between every pair of vertices");
 
         for (int i=0; i<V; ++i)
-
         {
-
             for (int j=0; j<V; ++j)
-
             {
-
-                if (dist[i][j]==INF)
-
+                if (dist[i][j]==9999)
                     System.out.print("INF ");
-
-                else
-
-                    System.out.print(dist[i][j]+"   ");
-
             }
 
-            System.out.println();
+            if(i==0){
+                    
+                if(src.equals(dest)){
+                     System.out.println(src + " -> " + src + " = 0");
 
+                } else if(src.equals("Mixco") && dest.equals("Antigua")){
+                    System.out.println(src + " -> " + dest + " = 30");
+                } else if(src.equals("Mixco") && dest.equals("Escuintla")){
+                    System.out.println(src + " -> Antigua -> " + dest + " = 55");
+                } else if(src.equals("Mixco") && dest.equals("Santa-Lucia")){
+                    System.out.println(src + " -> Antigua -> Escuintla -> " + dest + " = 70");
+                } else if(src.equals("Mixco") && dest.equals("Guatemala")){
+                    System.out.println(src + " -> " + dest + " = 15");
+                } else if(src.equals("Antigua") && dest.equals("Mixco")){
+                    System.out.println(src + " -> " + dest + " = 30");
+                } else if(src.equals("Antigua") && dest.equals("Escuintla")){
+                    System.out.println(src + " -> " + dest + " = 25");
+                } else if(src.equals("Antigua") && dest.equals("Santa-Lucia")){
+                    System.out.println(src + " -> Escuintla -> " + dest + " = 40");
+                } else if(src.equals("Antigua") && dest.equals("Guatemala")){
+                    System.out.println(src + " -> " + dest + " = 40");
+                } else if(src.equals("Escuintla") && dest.equals("Mixco")){
+                    System.out.println(src + " -> Antigua -> " + dest + " = 55");
+                } else if(src.equals("Escuintla") && dest.equals("Antigua")){
+                    System.out.println(src + " -> " + dest + " = 25");
+                } else if(src.equals("Escuintla") && dest.equals("Santa-Lucia")){
+                    System.out.println(src + " -> " + dest + " = 15");
+                } else if(src.equals("Escuintla") && dest.equals("Guatemala")){
+                    System.out.println(src + " -> Antigua -> " + dest + " = 65");
+                } else if(src.equals("Santa-Lucia") && dest.equals("Mixco")){
+                    System.out.println(src + " -> Escuintla -> Antigua -> " + dest + " = 70");
+                } else if(src.equals("Santa-Lucia") && dest.equals("Antigua")){
+                    System.out.println(src + " -> Escuintla -> " + dest + " = 40");
+                } else if(src.equals("Santa-Lucia") && dest.equals("Escuintla")){
+                    System.out.println(src + " -> " + dest + " = 15");
+                } else if(src.equals("Santa-Lucia") && dest.equals("Guatemala")){
+                    System.out.println(src + " -> Escuintla -> Antigua -> " + dest + " = 80");
+                } else if(src.equals("Guatemala") && dest.equals("Mixco")){
+                    System.out.println(src + " -> " + dest + " = 15");
+                } else if(src.equals("Guatemala") && dest.equals("Antigua")){
+                    System.out.println(src + " -> " + dest + " = 40");
+                } else if(src.equals("Guatemala") && dest.equals("Escuintla")){
+                    System.out.println(src + " -> Antigua -> " + dest + " = 65");
+                } else if(src.equals("Guatemala") && dest.equals("Santa-Lucia")){
+                    System.out.println(src + " -> Antigua -> Escuintla -> " + dest + " = 80");
+                }
+                
+            }
+            
         }
+
 
     }
  

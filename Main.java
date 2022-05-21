@@ -44,10 +44,17 @@ public class Main {
 
 					//Encontrar ruta más corta entre dos nodos
 					case 4:
+						String[] temp = new String[2];
+						System.out.println("\nIngrese el primer vertice: ");
+						temp[0] = scan.next();
+						System.out.println("\nIngrese el segundo vertice: ");
+						temp[1] = scan.next();
+						g.floydWarshall(temp[0], temp[1]);
 						break;
 
 					//Calcular centro del grafo
 					case 5:
+						System.out.println(c.calcCentro(g));
 						break;
 
 					//Salir
