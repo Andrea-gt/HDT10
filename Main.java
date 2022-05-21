@@ -34,12 +34,12 @@ public class Main {
 
 					//Agregar arco
 					case 2:
-						c.addEdge();
-						g = c.genGraph();
+						g = c.addEdge(g);
 						break;
 
 					//Elminar arco
 					case 3:
+						g = c.removeEdge(g);
 						break;
 
 					//Encontrar ruta más corta entre dos nodos

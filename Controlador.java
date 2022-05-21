@@ -24,15 +24,13 @@ public class Controlador {
 			System.exit(0);
 		}
 
-		
-
 	}
 
 	public Graph genGraph(){
 		return new Graph(edges);
 	}
 
-	public void addEdge(){
+	public Graph addEdge(Graph g){
 		String[] temp = new String[2];
 		System.out.println("\nIngrese el primer vertice: ");
 		temp[0] = scan.next();
@@ -40,7 +38,56 @@ public class Controlador {
 		temp[1] = scan.next();
 		System.out.println("\nIngrese el peso del arco: ");
 		int w = scan.nextInt();
+
+		for(int i = 0; i<g.adj_list.size(); i++){
+			for(int h = 0; h<g.adj_list.get(i).size(); i++){
+				if(g.adj_list.get(i).get(h).src.equals(temp[0]) && g.adj_list.get(i).get(h).value.equals(temp[1])){
+
+					System.out.println("\nEsta ruta ya existe, por lo que se solamente se ha actualizado el peso.");
+
+					g.adj_list.get(i).get(h).weight = w;
+					return g;
+
+				}
+			}
+		}
+	
 		edges.add(new Edge(edges.size(), temp[0], temp[1], w));
+		System.out.println("\nRuta agregada exitosamente");
+		return genGraph();
+
+	}
+
+	public Graph removeEdge(Graph g){
+		String[] temp = new String[2];
+		System.out.println("\nIngrese el primer vertice: ");
+		temp[0] = scan.next();
+		System.out.println("\nIngrese el segundo vertice: ");
+		temp[1] = scan.next();
+
+		for(int i = 0; i<g.adj_list.size(); i++){
+			for(int h = 0; h<g.adj_list.get(i).size(); i++){
+				if(g.adj_list.get(i).get(h).src.equals(temp[0]) && g.adj_list.get(i).get(h).value.equals(temp[1])){
+
+					System.out.println(edges.get(i).src + " " + edges.get(i).dest);
+
+					edges.remove(i);
+
+					for(int f = i; f<edges.size(); f++){
+						edges.get(f).val--;
+					}
+
+					System.out.println("\nRuta removida exitosamente.");
+
+					return genGraph();
+
+				}
+			}
+		}
+
+		System.out.println("\nEsa ruta no existe.");
+
+		return g;
 
 	}
 
