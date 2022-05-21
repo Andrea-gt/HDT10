@@ -2,14 +2,21 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+/*Universidad del Valle de Guatemala
+ * Algoritmos y Programacion Basica, seccion 20
+ * Fecha de entrega: 20/05/2022
+ * Andrea Ximena Ramirez Recinos 21874
+ * Adrián Ricardo Flores Trujillo 21500
+ * Clase Controlador
+ */
 public class Controlador {
 	private TxtReader fr = new TxtReader();
 	private ArrayList<String> lines = new ArrayList<String>();
 	private List<Edge> edges = new ArrayList<Edge>();
 	private Scanner scan = new Scanner(System.in);
+	
 	/**
-	 * Metodo encargado de ingresar las palabras iniciales al diccionario
+	 * Metodo encargado de ingresar las palabras iniciales al grafo
 	 */
 	public void EstablishingWords() {
 		try {
@@ -26,10 +33,18 @@ public class Controlador {
 
 	}
 
+	/**
+	 * Metodo para inicializar el grafo
+	 */
 	public Graph genGraph(){
 		return new Graph(edges);
 	}
 
+	/**
+	 * Metodo para agregar un Edge al grafo
+	 * @param g (Grafo)
+	 * @return
+	 */
 	public Graph addEdge(Graph g){
 		String[] temp = new String[2];
 		System.out.println("\nIngrese el primer vertice: ");
@@ -58,6 +73,11 @@ public class Controlador {
 
 	}
 
+	/**
+	 * Metodo para elminar un Edge al grafo
+	 * @param Grafo g
+	 * @return void
+	 */
 	public Graph removeEdge(Graph g){
 		String[] temp = new String[2];
 		System.out.println("\nIngrese el primer vertice: ");
@@ -90,7 +110,12 @@ public class Controlador {
 		return g;
 
 	}
-
+	
+	/**
+	 * Metodo para determinar el centro del grafo
+	 * @param Grafo g
+	 * @return String
+	 */
 	public String calcCentro(Graph g){
 
 		//Excentricidad

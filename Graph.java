@@ -1,7 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
-
-// Graph class
+/*Universidad del Valle de Guatemala
+ * Algoritmos y Programacion Basica, seccion 20
+ * Fecha de entrega: 20/05/2022
+ * Andrea Ximena Ramirez Recinos 21874
+ * Adrián Ricardo Flores Trujillo 21500
+ * Clase Graph 
+ */
 class Graph {
 
     final static int INF = 99999;
@@ -21,7 +26,7 @@ class Graph {
  
 List<List<Node>> adj_list = new ArrayList<>();
  
-    //Graph Constructor
+    //Constructor de Grafo
     public Graph(List<Edge> edges)
     {
         // adjacency list memory allocation
@@ -55,6 +60,11 @@ List<List<Node>> adj_list = new ArrayList<>();
     }
 
 
+
+    /** Método para generar las rutas más cortas con el algoritmo de Floyd
+     * @param src
+     * @param dest
+     */
     public void floydWarshall(String src, String dest){
 
         int V = adj_list.size();
@@ -78,6 +88,13 @@ List<List<Node>> adj_list = new ArrayList<>();
 
     }
  
+
+
+    /** Método para imprimir las rutas más cortas
+     * @param dist
+     * @param src
+     * @param dest
+     */
 
     void printSolution(int dist[][], String src, String dest){
 
